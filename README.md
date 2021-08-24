@@ -1,4 +1,4 @@
-# CarShop
+# CarToken
 
 ## Background
 Charles has a car selling shop and he is interested in using Ethereum as an efficient way to

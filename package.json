@@ -1,7 +1,7 @@
 {
-  "name": "car_sell",
+  "name": "ERC20",
   "version": "1.0.0",
-  "description": "This is Car Token",
+  "description": "This is ERC20 Token",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.1.0",
+    "@openzeppelin/contracts-upgradeable": "^4.3.0",
+    "@openzeppelin/hardhat-upgrades": "^1.9.0",
     "dotenv": "^10.0.0"
   }
 }

@@ -1,4 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
+require('@openzeppelin/hardhat-upgrades');
 require('dotenv').config()
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -22,10 +23,13 @@ module.exports = {
   networks: {
     hardhat: {
     },
-    kovan: {
-      url: `https://kovan.infura.io/v3/${process.env.INFURA_KEY}`,
+    ropsten: {
+      url: `https://ropsten.infura.io/v3/${process.env.INFURA_KEY}`,
       accounts: [process.env.PRIVATE_KEY]
     }
+  },
+  etherscan: {
+    apiKey: `${process.env.ETHERSCAN_KEY}`
   }
 };
 

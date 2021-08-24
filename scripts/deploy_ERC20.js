@@ -3,23 +3,23 @@
 //
 // When running the script with `hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
-const hre = require("hardhat");
+const { ethers, upgrades } = require("hardhat");
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
   // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile 
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
 
   // We get the contract to deploy
-  const CarToken = await hre.ethers.getContractFactory("CarToken");
-  const token = await CarToken.deploy("CarNFT", "CNFT");
+  const ERC20 = await ethers.getContractFactory("ERC20");
+  const token = await upgrades.deployProxy(ERC20, ["UpgradableERC20", "UERC20"]);
 
   await token.deployed();
 
-  console.log("CarToken deployed to:", token.address);
+  console.log("ERC20 deployed to:", token.address);
+
+  //upgrading
+  const ERC20V2 = await ethers.getContractFactory("ERC20_V2");
+  const upgraded = await upgrades.upgradeProxy(token.address, ERC20V2);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
